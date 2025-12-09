@@ -1,0 +1,76 @@
+############################
+## General .NET Files
+############################
+
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+*.log
+*.pfx
+*.snk
+*.dll
+*.exe
+*.pdb
+*.psess
+*.vsp
+*.publish.xml
+
+# NuGet related
+[Pp]ackages/
+# If you don't use PackageReferences in your .csproj, include this:
+# NuGet.config
+
+############################
+## Visual Studio & Windows
+############################
+
+# Solution files and user settings
+*.sln.docstates
+*.user
+*.suo
+*.userosscache
+*.ncb
+*.aps
+*.lck
+
+# Code analysis and diagnostics
+*.vsix
+*.vsix.json
+VsixTesting/
+Installers/
+
+# Test results
+TestResults/
+*.trx
+*.blg
+
+# Temporary files
+~$*
+*.bak
+
+############################
+## IDEs (e.g., JetBrains Rider, VS Code)
+############################
+
+# JetBrains Rider/IntelliJ IDEA
+.idea/
+
+# VS Code
+.vscode/
+
+############################
+## Docker
+############################
+
+# Build cache and temporary files for Docker builds
+.dockerignore
+!Dockerfile
+!compose.yaml
+
+############################
+## Mac & Linux
+############################
+# Mac/OSX
+.DS_Store
+# Linux
+*~

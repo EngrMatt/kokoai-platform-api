@@ -1,0 +1,7 @@
+﻿services:
+  kokoai-platform-api:
+    image: kokoai-platform-api
+    build:
+      context: .
+      dockerfile: kokoai-platform-api/Dockerfile
+

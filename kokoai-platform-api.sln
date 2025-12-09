@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kokoai-platform-api", "kokoai-platform-api\kokoai-platform-api.csproj", "{9C20C704-F5F8-4192-8E7D-47F40BF8E64E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D996A32-A100-40F6-9DAD-7B45BD9A30E8}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C20C704-F5F8-4192-8E7D-47F40BF8E64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C20C704-F5F8-4192-8E7D-47F40BF8E64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C20C704-F5F8-4192-8E7D-47F40BF8E64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C20C704-F5F8-4192-8E7D-47F40BF8E64E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
