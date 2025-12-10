@@ -9,12 +9,12 @@
     depends_on:
       - db
     environment:
-      - ConnectionStrings__DefaultConnection=Host=${DB_HOST};Port=5400;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - ConnectionStrings__DefaultConnection=Host=${DB_HOST};Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
       - ASPNETCORE_ENVIRONMENT={ASPNETCORE_ENVIRONMENT}
 
 
   db:
-    image: postgres:18-alpine
+    image: pgvector/pgvector:pg18-trixie
     container_name: postgres-pgvector-db
     restart: always
     environment:
