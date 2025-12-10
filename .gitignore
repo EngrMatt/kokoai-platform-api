@@ -74,3 +74,6 @@ TestResults/
 .DS_Store
 # Linux
 *~
+
+# environment
+.env

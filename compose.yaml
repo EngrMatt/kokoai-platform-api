@@ -1,7 +1,31 @@
 ﻿services:
   kokoai-platform-api:
     image: kokoai-platform-api
+    ports:
+      - "8000:8080"
     build:
       context: .
       dockerfile: kokoai-platform-api/Dockerfile
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=${DB_HOST};Port=5400;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - ASPNETCORE_ENVIRONMENT={ASPNETCORE_ENVIRONMENT}
 
+
+  db:
+    image: postgres:18-alpine
+    container_name: postgres-pgvector-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    ports:
+      - "5400:5432"
+
+volumes:
+  postgres_data:
