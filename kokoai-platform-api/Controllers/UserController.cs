@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using kokoai_platform_api.DTOs.User;
 
 namespace kokoai_platform_api.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -44,6 +45,7 @@ public class UserController : ControllerBase
     }
     
     // 建立使用者
+    [Authorize(Roles = "Admin")]
     [HttpPost("CreateUser")]
     public async Task<IActionResult> CreateUser([FromBody] UserCreateDto model)
     {
