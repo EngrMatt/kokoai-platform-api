@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace kokoai_platform_api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // 路由為 /api/Role
+[Route("api/[controller]")]
 public class RoleController : ControllerBase
 {
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
@@ -20,26 +20,20 @@ public class RoleController : ControllerBase
         _roleManager = roleManager;
     }
     
-    // =========================================================
-    // C: 建立角色 (Create)
-    // 請求: POST /api/Role
-    // =========================================================
-    [HttpPost]
+    [HttpPost("CreateRole")]
     public async Task<IActionResult> CreateRole([FromBody] RoleCreateDto model)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        
-        // 檢查角色名稱是否已存在
+
         if (await _roleManager.RoleExistsAsync(model.RoleName))
         {
             ModelState.AddModelError(nameof(model.RoleName), "此角色名稱已存在。");
             return BadRequest(ModelState);
         }
-
-        // 建立 IdentityRole<Guid> 物件
+        
         var role = new IdentityRole<Guid>(model.RoleName);
 
         var result = await _roleManager.CreateAsync(role);
@@ -62,14 +56,9 @@ public class RoleController : ControllerBase
         return BadRequest(ModelState);
     }
     
-    // =========================================================
-    // R: 讀取所有角色 (Read All)
-    // 請求: GET /api/Role
-    // =========================================================
-    [HttpGet]
+    [HttpGet("GetRoles")]
     public IActionResult GetRoles()
     {
-        // 將 IdentityRole<Guid> 投影轉換為 RoleDto 列表
         var roles = _roleManager.Roles
             .Select(r => new RoleDto 
             {
@@ -80,12 +69,8 @@ public class RoleController : ControllerBase
 
         return Ok(roles);
     }
-    
-    // =========================================================
-    // R: 讀取單一角色 (Read Single) (供 CreatedAtAction 引用)
-    // 請求: GET /api/Role/{id}
-    // =========================================================
-    [HttpGet("{id}")]
+
+    [HttpGet("GetRoleById/{id}")]
     public async Task<IActionResult> GetRoleById(string id)
     {
         var role = await _roleManager.FindByIdAsync(id); 
